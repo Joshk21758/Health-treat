@@ -1,0 +1,6 @@
+{
+  "name": "SmileCare Dental",
+  "description": "A modern dental clinic booking application landing page featuring a hero section and services offered.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
