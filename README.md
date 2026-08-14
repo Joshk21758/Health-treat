@@ -1,6 +1,6 @@
 # New Life Medical Centre
 
-Med-care is a medical appointment booking system built with Next.js and MongoDB. It provides patients and healthcare providers a simple, secure way to manage appointments, view user profiles, and handle booking workflows.
+New Life Medical Centre is a medical appointment booking system built with Next.js and MongoDB. It provides patients and healthcare providers a simple, secure way to manage appointments, view user profiles, and handle booking workflows.
 
 ## Table of contents
 
