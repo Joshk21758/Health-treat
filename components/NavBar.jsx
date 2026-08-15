@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function NavBar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div>
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-40 border-b border-slate-200">
