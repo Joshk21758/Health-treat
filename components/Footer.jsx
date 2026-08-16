@@ -10,20 +10,20 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-2 mb-6 text-white">
                 <Smile className="w-8 h-8 text-teal-500" />
-                <span className="text-3xl font-bold tracking-tight">
+                <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-green-500">
                   New Life Medical Centre
                 </span>
               </div>
-              <p className="text-slate-400 mb-6 leading-relaxed">
+              <p className="text-gray-200 mb-6 leading-relaxed">
                 Providing exceptional care with a gentle touch. Your health is
                 our top priority.
               </p>
-              <div className="flex items-center gap-4 text-slate-400">
+              <div className="flex items-center gap-4 text-gray-200">
                 <Phone className="w-5 h-5" />
                 <span>077 1078 320</span>
               </div>
-              <div className="flex items-center gap-4 text-slate-400 mt-3">
-                <MapPin className="w-5 h-5" />
+              <div className="flex items-center gap-4 text-gray-200 mt-3">
+                <MapPin color="red" className="w-5 h-5" />
                 <span>
                   Libala stage 1, No.2 Boli Rd
                   <br />
@@ -77,11 +77,11 @@ export default function Footer() {
                 Hours
               </h4>
               <ul className="space-y-3">
-                <li className="flex justify-between border-b border-slate-800 pb-2">
+                <li className="flex justify-between border-b border-gray-600 pb-2">
                   <span>Monday - Friday</span>
                   <span className="text-white">Open 24 hours</span>
                 </li>
-                <li className="flex justify-between border-b border-slate-800 pb-2">
+                <li className="flex justify-between border-b border-gray-600 pb-2">
                   <span>Saturday</span>
                   <span className="text-white">Open 24 hours</span>
                 </li>
@@ -94,7 +94,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-white mt-12 pt-8 text-center text-white text-sm">
+          <div className="border-t border-gray-600 mt-12 pt-8 text-center text-white text-sm">
             <p>
               &copy; {new Date().getFullYear()} New Life Medical Centre. All
               rights reserved.

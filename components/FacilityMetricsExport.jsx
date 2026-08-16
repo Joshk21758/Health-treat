@@ -1,7 +1,7 @@
 "use client";
 
 export default function FacilityMetricsExport({ metrics, topServices }) {
-  const downloadCsv = () => {
+  const downloadPdf = () => {
     const rows = [
       ["Metric", "Value"],
       ["Completed consultations", metrics.completedConsultations.toString()],
@@ -18,11 +18,11 @@ export default function FacilityMetricsExport({ metrics, topServices }) {
       )
       .join("\n");
 
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const blob = new Blob([csvContent], { type: "text/pdf;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "facility-metrics.csv";
+    link.download = "facility-metrics.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -32,10 +32,10 @@ export default function FacilityMetricsExport({ metrics, topServices }) {
   return (
     <button
       type="button"
-      onClick={downloadCsv}
+      onClick={downloadPdf}
       className="inline-flex items-center rounded-full bg-gray-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-600/20 transition hover:bg-green-700 cursor-pointer"
     >
-      Export Metrics CSV
+      Export Metrics to PDF
     </button>
   );
 }

@@ -166,7 +166,7 @@ export default function PatientForm() {
             className="w-full rounded-full bg-neutral-800 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-teal-600/20 transition hover:bg-green-700 cursor-pointer disabled:opacity-60 items-center"
           >
             {isPending ?
-              <Loader2 color="white" className="w-5 h-5 animate-spin" />
+              <Loader2 color="white" className="w-5 h-5 animate-spin ml-47" />
             : "Create Profile"}
           </button>
         </form>

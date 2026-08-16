@@ -194,7 +194,7 @@ export default function LandingPage() {
                 best, healthy and professionalized treatment.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 animate-pulse">
                 <Link
                   href="/appointments"
                   className="bg-neutral-800 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-xl shadow-teal-600/20 active:scale-95 flex items-center justify-center gap-2"

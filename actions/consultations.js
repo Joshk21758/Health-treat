@@ -44,3 +44,23 @@ export async function submitConsultation(state, formData) {
   //redirect
   revalidatePath("/admin/dashboard/consultations");
 }
+
+export async function deleteConsultation(formData) {
+  const consultId = formData.get("consultId");
+
+  if (!consultId) {
+    throw new Error("consultation ID is invalid");
+  }
+
+  //find profile to delete
+  const consultationsCollection = await getCollection("consultations");
+  const consultation = await consultationsCollection.findOne({
+    _id: ObjectId.createFromHexString(formData.get("consultId")),
+  });
+
+  //Delete the post
+  await consultationsCollection.findOneAndDelete({ _id: consultation._id });
+
+  //revalidate path
+  revalidatePath("/admin/dashboard/consultations");
+}

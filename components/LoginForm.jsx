@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useActionState } from "react";
 import { login } from "../actions/userAuth";
+import { Loader2 } from "lucide-react";
 
 const initialState = {
   errors: {},
@@ -14,12 +15,12 @@ export default function LoginForm() {
   return (
     <div className="min-h-screen bg-slate-950 px-4 py-10 text-white sm:px-6 lg:px-8 mt-28">
       <div className="mx-auto flex max-w-5xl flex-col overflow-hidden rounded-3xl border border-slate-800 bg-green-900/90 shadow-2xl shadow-black/30 lg:flex-row">
-        <div className="flex flex-1 flex-col justify-center bg-gradient-to-br from-cyan-600 to-teal-800 p-8 sm:p-10">
+        <div className="flex flex-1 flex-col justify-center bg-gradient-to-br from-neutral-400 to-neutral-800 p-8 sm:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-100">
             New Life Medical
           </p>
           <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">
-            Welcome back Admin
+            Welcome back
           </h1>
           <p className="mt-4 max-w-md text-sm leading-6 text-cyan-50/90 sm:text-base">
             Sign in to manage appointments, patient requests, and daily clinic
@@ -65,17 +66,19 @@ export default function LoginForm() {
 
             <button
               disabled={pending}
-              className="w-full rounded-xl bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-green-500 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
+              className="w-full rounded-xl bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-green-500 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer  items-center"
             >
-              {pending ? "Signing in..." : "Sign in"}
+              {pending ?
+                <Loader2 color="white" className="w-5 h-5 animate-spin ml-47" />
+              : "Login"}
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-slate-400">
+          <p className="mt-6 text-center text-sm text-white">
             New admin?{" "}
             <Link
               href="/admin/register"
-              className="font-medium text-green-400 hover:text-white"
+              className="font-medium text-green-400 hover:text-teal-500"
             >
               Create account
             </Link>

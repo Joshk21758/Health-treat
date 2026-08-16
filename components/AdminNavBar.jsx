@@ -22,12 +22,6 @@ export default async function AdminNavBar() {
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
               <Link
-                href="/admin/dashboard/appointments"
-                className="text-slate-600 hover:text-green-600 font-medium transition-colors"
-              >
-                Appointments
-              </Link>
-              <Link
                 href="/admin/dashboard/duty-management"
                 className="text-slate-600 hover:text-green-600 font-medium transition-colors"
               >

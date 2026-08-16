@@ -1,4 +1,5 @@
 import { getCollection } from "../../../../lib/db";
+import { deleteConsultation } from "../../../../actions/consultations";
 import Link from "next/link";
 
 export default async function ConsultationsPage() {
@@ -39,6 +40,9 @@ export default async function ConsultationsPage() {
                   <th className="px-6 py-4 text-left text-sm font-semibold">
                     Lab requests
                   </th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -67,6 +71,18 @@ export default async function ConsultationsPage() {
                         <p className="text-sm font-medium text-gray-900">
                           {con.labRequests}
                         </p>
+                      </td>
+                      <td className="px-6 py-4">
+                        <form action={deleteConsultation}>
+                          <input
+                            type="hidden"
+                            name="consultId"
+                            defaultValue={con._id.toString()}
+                          />
+                          <button className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-slate-500 hover:bg-red-500 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">
+                            Delete
+                          </button>
+                        </form>
                       </td>
                     </tr>
                   ))

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useActionState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { createAppointment } from "../actions/bookings";
+import { Loader2 } from "lucide-react";
 
 const services = [
   "General Consultation",
@@ -59,53 +60,53 @@ export default function AppointmentForm() {
         <form action={action} className="space-y-6">
           <div className="grid gap-6 sm:grid-cols-2">
             <label className="space-y-3">
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-lg ml-1 font-medium text-slate-700">
                 Full Name *
               </span>
               <input
                 type="text"
                 name="fullName"
                 placeholder="Enter your Names"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-2xl border border-gray-400 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
             </label>
 
             <label className="space-y-3">
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-lg ml-1 font-medium text-slate-700">
                 Email *
               </span>
               <input
                 type="email"
                 name="email"
                 placeholder="your-email@gmail.com"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-2xl border border-gray-400 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
             </label>
 
             <label className="space-y-3">
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-lg ml-1 font-medium text-slate-700">
                 Phone Number *
               </span>
               <input
                 type="text"
                 name="phoneNumber"
                 placeholder="077 1287 453"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-2xl border border-gray-400 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
               {state?.errors?.phoneNumber && (
-                <p className="text-sm mt-4 text-red-700">
+                <p className="text-sm mt-4 text-red-500">
                   {state.errors.phoneNumber}
                 </p>
               )}
             </label>
 
             <label className="space-y-3">
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-lg ml-1 font-medium text-slate-700">
                 Select Service
               </span>
               <select
                 name="service"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-2xl border border-gray-400 bg-slate-50 px-5 py-4 text-slate-900 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               >
                 {services.map((service) => (
                   <option key={service} value={service}>
@@ -118,40 +119,42 @@ export default function AppointmentForm() {
 
           <div className="grid gap-6 sm:grid-cols-2">
             <label className="space-y-3">
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-lg ml-1 font-medium text-slate-700">
                 Preferred Date *
               </span>
               <input
                 type="date"
                 name="prefDate"
                 placeholder="e.g., 11/08/2026"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-2xl border border-gray-400 bg-slate-50 px-5 py-4 text-slate-900 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
             </label>
 
             <label className="space-y-3">
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-lg ml-1 font-medium text-slate-700">
                 Preferred Time *
               </span>
               <input
                 type="time"
                 name="prefTime"
                 placeholder="e.g., 15:30 PM"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-2xl border border-gray-400 bg-slate-50 px-5 py-4 text-slate-900 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
             </label>
           </div>
 
           <label className="space-y-3">
-            <span className="text-sm font-medium text-slate-700">Notes</span>
+            <span className="text-lg ml-1 font-medium text-slate-700">
+              Notes
+            </span>
             <textarea
               name="message"
               rows={5}
               placeholder="Please share symptoms or anything else we should know."
-              className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+              className="w-full rounded-2xl border border-gray-400 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
             />
             {state?.errors?.message && (
-              <p className="text-sm mt-4 text-red-700">
+              <p className="text-sm mt-4 text-red-500">
                 {state.errors.message}
               </p>
             )}
@@ -159,9 +162,11 @@ export default function AppointmentForm() {
 
           <button
             disabled={isPending}
-            className="w-full rounded-full bg-green-400 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-teal-600/20 transition hover:bg-teal-700 cursor-pointer disabled:opacity-60"
+            className="w-full rounded-full bg-neutral-800 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-teal-600/20 transition hover:bg-green-700 cursor-pointer disabled:opacity-60"
           >
-            {isPending ? "Submitting..." : "Confirm Appointment"}
+            {isPending ?
+              <Loader2 color="white" className="w-5 h-5 animate-spin ml-115" />
+            : "Confirm Appointment"}
           </button>
         </form>
       </div>
