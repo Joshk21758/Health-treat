@@ -3,7 +3,9 @@
 import { getCollection } from "../lib/db";
 import { AppointmentFormSchema } from "../lib/schema";
 import { ObjectId } from "mongodb";
+import { transporter } from "../lib/nodemailer";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 // User appointment server action
 export async function createAppointment(state, formData) {
@@ -73,12 +75,13 @@ export async function approveAppointment(formData) {
 
   if (appointment.email) {
     try {
-      await sendBrevoEmail({
-        to: [
-          { email: appointment.email, name: appointment.fullName || "Patient" },
-        ],
+      // Replaced sendBrevoEmail with transporter.sendMail
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM,
+        to: appointment.email,
         subject: "Your Med Life appointment has been approved",
-        htmlContent: `
+        text: `Hi ${appointment.fullName || "Patient"}, your appointment has been approved. We will contact you shortly with the final confirmation.`,
+        html: `
           <h2>Appointment approved</h2>
           <p>Hi ${appointment.fullName || "Patient"},</p>
           <p>Your appointment request with Med Life Medical Centre has been approved.</p>
@@ -87,7 +90,6 @@ export async function approveAppointment(formData) {
           <p><strong>Preferred time:</strong> ${appointment.prefTime || "To be confirmed"}</p>
           <p>We will contact you shortly with the final confirmation.</p>
         `,
-        textContent: `Hi ${appointment.fullName || "Patient"}, your appointment has been approved. We will contact you shortly with the final confirmation.`,
       });
     } catch (error) {
       console.error("Failed to send approval email:", error);
@@ -98,7 +100,7 @@ export async function approveAppointment(formData) {
     }
   }
 
-  redirect("/admin/dashboard");
+  revalidatePath("/admin/dashboard/appointments");
 }
 
 // Reschedule server action
@@ -124,12 +126,13 @@ export async function rescheduleAppointment(formData) {
 
   if (appointment.email) {
     try {
-      await sendBrevoEmail({
-        to: [
-          { email: appointment.email, name: appointment.fullName || "Patient" },
-        ],
+      // Replaced sendBrevoEmail with transporter.sendMail
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM,
+        to: appointment.email,
         subject: "Your Med Life appointment has been rescheduled",
-        htmlContent: `
+        text: `Hi ${appointment.fullName || "Patient"}, your appointment has been rescheduled. New date: ${newDate}; New time: ${newTime}.`,
+        html: `
           <h2>Appointment rescheduled</h2>
           <p>Hi ${appointment.fullName || "Patient"},</p>
           <p>Your appointment with Med Life Medical Centre has been rescheduled.</p>
@@ -137,7 +140,6 @@ export async function rescheduleAppointment(formData) {
           <p><strong>New time:</strong> ${newTime}</p>
           <p>Please reply to this email if you need any assistance.</p>
         `,
-        textContent: `Hi ${appointment.fullName || "Patient"}, your appointment has been rescheduled. New date: ${newDate}; New time: ${newTime}.`,
       });
     } catch (error) {
       console.error("Failed to send reschedule email:", error);
@@ -148,5 +150,5 @@ export async function rescheduleAppointment(formData) {
     }
   }
 
-  redirect("/admin/dashboard");
+  revalidatePath("/admin/dashboard/appointments");
 }
