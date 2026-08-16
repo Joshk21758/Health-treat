@@ -8,6 +8,14 @@ const initialState = {
   errors: {},
 };
 
+const roles = [
+  "Manager",
+  "Clinical Officer",
+  "Medical Officer",
+  "Receptionist",
+  "Nurse",
+];
+
 export default function RegisterForm() {
   const [state, action, pending] = useActionState(register, initialState);
 
@@ -44,6 +52,22 @@ export default function RegisterForm() {
                   {state.errors.fullName}
                 </p>
               : null}
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-slate-200">
+                Role
+              </label>
+              <select
+                name="role"
+                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+              >
+                {roles.map((role) => (
+                  <option key={role} value={role}>
+                    {role}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>

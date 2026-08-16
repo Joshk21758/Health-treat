@@ -197,14 +197,12 @@ export default function LandingPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/appointments"
-                  className="bg-green-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-xl shadow-teal-600/20 active:scale-95 flex items-center justify-center gap-2"
+                  className="bg-neutral-800 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-xl shadow-teal-600/20 active:scale-95 flex items-center justify-center gap-2"
                 >
                   <CalendarDays className="w-5 h-5" />
                   Book an Appointment
                 </Link>
               </div>
-
-              <div className="mt-10 flex items-center gap-4 text-sm text-slate-500"></div>
             </div>
 
             <div className="relative lg:h-[600px] flex justify-center lg:justify-end">

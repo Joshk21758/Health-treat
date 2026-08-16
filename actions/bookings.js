@@ -5,45 +5,10 @@ import { AppointmentFormSchema } from "../lib/schema";
 import { ObjectId } from "mongodb";
 import { redirect } from "next/navigation";
 
-const BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
-
-async function sendBrevoEmail({ to, subject, htmlContent, textContent }) {
-  const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) {
-    console.warn("BREVO_API_KEY is not set. Appointment email was not sent.");
-    return false;
-  }
-
-  const response = await fetch(BREVO_API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "api-key": apiKey,
-    },
-    body: JSON.stringify({
-      sender: {
-        name: process.env.BREVO_SENDER_NAME || "Med Life Medical Centre",
-        email: process.env.BREVO_SENDER_EMAIL || "no-reply@medlife.com",
-      },
-      to,
-      subject,
-      htmlContent,
-      textContent,
-    }),
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Brevo request failed (${response.status}): ${errorText}`);
-  }
-
-  return true;
-}
-
 // User appointment server action
 export async function createAppointment(state, formData) {
   //Simulate async delay
-  await new Promise((resolve) => setTimeout(resolve, 4000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const validatedFields = AppointmentFormSchema.safeParse({
     fullName: formData.get("fullName"),

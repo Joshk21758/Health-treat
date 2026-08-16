@@ -1,52 +1,82 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { getCollection } from "../lib/db";
-import { PatientProfileSchema } from "../lib/schema";
+import { PatientSchema } from "../lib/schema";
 import { ObjectId } from "mongodb";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
-export async function createPatientProfile(state, formData) {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-
-  const validated = PatientProfileSchema.safeParse({
+export async function submitPatientProfile(state, formData) {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  //Validate form data
+  const validatedFields = PatientSchema.safeParse({
     fullName: formData.get("fullName"),
+    phone: formData.get("phone"),
     email: formData.get("email"),
-    phoneNumber: formData.get("phoneNumber"),
     dateOfBirth: formData.get("dateOfBirth"),
     gender: formData.get("gender"),
     bloodGroup: formData.get("bloodGroup"),
-    allergies: formData.get("allergies"),
-    medicalConditions: formData.get("medicalConditions"),
-    medications: formData.get("medications"),
-    emergencyContactName: formData.get("emergencyContactName"),
-    emergencyContactNumber: formData.get("emergencyContactNumber"),
+    conditions: formData.get("conditions"),
   });
 
-  if (!validated.success) {
-    return { errors: validated.error.flatten().fieldErrors };
+  //check if validation is success
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+    };
   }
 
-  const patientCollection = await getCollection("patients");
-  await patientCollection.insertOne({
-    ...validated.data,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
+  //Extract form data
+  const {
+    fullName,
+    phone,
+    email,
+    dateOfBirth,
+    gender,
+    bloodGroup,
+    conditions,
+  } = validatedFields.data;
 
-  redirect("/admin/dashboard");
+  const patientCollection = await getCollection("patients");
+
+  //save consultations to the database
+  let savedPatient;
+  try {
+    savedPatient = await patientCollection.insertOne({
+      fullName: validatedFields.data.fullName,
+      phone: validatedFields.data.phone,
+      email: validatedFields.data.email,
+      dateOfBirth: validatedFields.data.dateOfBirth,
+      gender: validatedFields.data.gender,
+      bloodGroup: validatedFields.data.bloodGroup,
+      conditions: validatedFields.data.conditions,
+    });
+  } catch (error) {
+    console.log("Failed to save patient:", error);
+  }
+
+  // return a result for the client to consume (e.g. show a toast)
+  return {
+    success: true,
+    message: "Patient profile created!",
+  };
 }
 
 export async function deletePatientProfile(formData) {
   const patientId = formData.get("patientId");
+
   if (!patientId) {
-    return { success: false, message: "Missing patient ID." };
+    throw new Error("Patient ID is invalid");
   }
 
-  const patientCollection = await getCollection("patients");
-  await patientCollection.deleteOne({
-    _id: ObjectId.createFromHexString(patientId),
+  //find profile to delete
+  const patientsCollection = await getCollection("patients");
+  const patient = await patientsCollection.findOne({
+    _id: ObjectId.createFromHexString(formData.get("patientId")),
   });
 
+  //Delete the post
+  await patientsCollection.findOneAndDelete({ _id: patient._id });
+
+  //revalidate path
   revalidatePath("/admin/dashboard/patient-directory");
 }

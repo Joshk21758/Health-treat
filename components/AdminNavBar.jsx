@@ -22,23 +22,16 @@ export default async function AdminNavBar() {
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
               <Link
-                href="/admin/dashboard/patient-directory"
+                href="/admin/dashboard/appointments"
                 className="text-slate-600 hover:text-green-600 font-medium transition-colors"
               >
-                Patient directory
+                Appointments
               </Link>
-
               <Link
                 href="/admin/dashboard/duty-management"
                 className="text-slate-600 hover:text-green-600 font-medium transition-colors"
               >
                 Duty Roster
-              </Link>
-              <Link
-                href="/admin/dashboard/facility-metrics"
-                className="text-slate-600 hover:text-green-600 font-medium transition-colors"
-              >
-                Facility metrics
               </Link>
               <Link
                 href="/admin/dashboard/user-management"
@@ -48,7 +41,7 @@ export default async function AdminNavBar() {
               </Link>
               {user && (
                 <form action={logout}>
-                  <button className="bg-neutral-700 hover:bg-red-500 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md shadow-teal-600/20 active:scale-95 cursor-pointer">
+                  <button className="bg-neutral-700 hover:bg-red-500 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-sm shadow-neutral-600/20 active:scale-95 cursor-pointer">
                     Logout
                   </button>
                 </form>

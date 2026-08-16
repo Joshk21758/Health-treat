@@ -1,206 +1,84 @@
-import {
-  approveAppointment,
-  rescheduleAppointment,
-} from "../../../actions/bookings";
-import { getCollection } from "../../../lib/db";
+import React from "react";
 import Link from "next/link";
+import { DASHBOARD_MODULES } from "../../../lib/Links";
+import { ChevronRight, ShieldCheck } from "lucide-react";
+import { authUser } from "../../../lib/authUser";
 
-export default async function AdminDashboard({ searchParams }) {
-  const sortBy = searchParams?.sortBy || "submitted";
-  const sortOrder = searchParams?.sortOrder === "desc" ? "desc" : "asc";
+export default async function DashboardHubPage() {
+  const user = await authUser();
 
-  // get appointments collection
-  const appointmentsCollection = await getCollection("appointments");
-  const appointments = await appointmentsCollection.find().toArray();
-
-  const sortedAppointments = [...appointments].sort((a, b) => {
-    const normalizeValue = (appointment) => {
-      if (sortBy === "submitted") {
-        return appointment.createdAt ?
-            new Date(appointment.createdAt).getTime()
-          : appointment._id.getTimestamp().getTime();
-      }
-
-      return (appointment[sortBy] ?? "").toString().toLowerCase();
-    };
-
-    const aValue = normalizeValue(a);
-    const bValue = normalizeValue(b);
-
-    if (aValue < bValue) return sortOrder === "asc" ? -1 : 1;
-    if (aValue > bValue) return sortOrder === "asc" ? 1 : -1;
-    return 0;
-  });
-
-  const buildSortLink = (field) => {
-    const nextOrder = sortBy === field && sortOrder === "asc" ? "desc" : "asc";
-    const selected = sortBy === field;
-
-    return (
-      <Link
-        href={`/admin/dashboard?sortBy=${field}&sortOrder=${nextOrder}`}
-        className={`inline-flex items-center gap-2 text-sm font-semibold transition ${selected ? "text-gray-100" : "text-white hover:text-green-600"}`}
-      >
-        {field === "submitted" ?
-          "Submitted"
-        : field === "fullName" ?
-          "Patient"
-        : field === "service" ?
-          "Service"
-        : field === "prefDate" ?
-          "Date"
-        : field}
-        <span className="text-xs uppercase tracking-[0.24em]">
-          {selected ?
-            sortOrder === "asc" ?
-              "↑"
-            : "↓"
-          : "⇅"}
-        </span>
-      </Link>
-    );
-  };
+  // Filter modules where user's role exists in allowed roles
+  const userRole = (user.role || "").toUpperCase();
+  const accessibleModules = DASHBOARD_MODULES.filter((module) =>
+    module.roles.includes(userRole),
+  );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header Section */}
-        <div className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-neutral-800 mb-2 mt-5">
-            Administrators Dashboard
-          </h1>
-          <p className="text-lg text-gray-600 mb-6">
-            Track and manage patient records and appointments.
+    <div className="max-w-7xl mx-auto p-6 space-y-6 mt-10">
+      {/* Banner */}
+      <div className="bg-neutral-900 rounded-2xl p-6 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm">
+        <div>
+          <span className="inline-flex items-center gap-1.5 text-sm font-semibold bg-emerald-500/10 text-emerald-400 border border-green-500/20 px-2.5 py-1 rounded-full mb-2">
+            <ShieldCheck className="w-3.5 h-3.5" /> Logged in as {userRole}
+          </span>
+          <h1 className="text-2xl font-bold">Welcome, {user.fullName}</h1>
+          <p className="text-lg text-gray-400 mt-1">
+            Select a module below to access clinical operations authorized for
+            your role.
           </p>
         </div>
+      </div>
 
-        {/* Table Section */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-neutral-800 text-white">
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
-                    {buildSortLink("fullName")}
-                  </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold">
-                    Email
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">
-                    Phone Number
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">
-                    {buildSortLink("service")}
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">
-                    {buildSortLink("prefDate")}
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">
-                    Preferred Time
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">
-                    Description
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">
-                    {buildSortLink("submitted")}
-                  </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {sortedAppointments.length > 0 ?
-                  sortedAppointments.map((appointment) => (
-                    <tr
-                      key={appointment._id}
-                      className="hover:bg-gray-50 transition-colors duration-150"
-                    >
-                      <td className="px-6 py-4">
-                        <p className="text-sm font-medium text-neutral-900">
-                          {appointment.fullName}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4">
-                        <p className="text-sm font-semibold text-gray-600">
-                          {appointment.email}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <p className="text-sm font-semibold text-gray-600">
-                          {appointment.phoneNumber}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <p className="text-sm font-semibold text-gray-600">
-                          {appointment.service}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <p className="text-sm font-semibold text-gray-600">
-                          {appointment.prefDate}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <p className="text-sm font-semibold text-gray-600">
-                          {appointment.prefTime}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <p className="text-sm font-semibold text-gray-600">
-                          {appointment.message}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <p className="text-sm font-semibold text-gray-600">
-                          {appointment._id.getTimestamp().toLocaleString()}
-                        </p>
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        <div className="flex justify-center gap-3">
-                          <form action={approveAppointment}>
-                            <input
-                              type="hidden"
-                              name="postId"
-                              value={appointment._id.toString()}
-                            />
-                            <button className="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white bg-green-500 hover:bg-green-900 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">
-                              Approve
-                            </button>
-                          </form>
-                          <form action={rescheduleAppointment}>
-                            <input
-                              type="hidden"
-                              name="postId"
-                              value={appointment._id.toString()}
-                            />
-                            <button className="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white bg-slate-500 hover:bg-slate-900 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">
-                              Reschedule
-                            </button>
-                          </form>
-                          <Link
-                            href={`/appointments/show/${appointment._id.toString()}`}
-                            className="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-white bg-slate-500 hover:bg-slate-900 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
-                          >
-                            View details
-                          </Link>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                : <tr>
-                    <td
-                      colSpan="4"
-                      className="px-6 py-8 text-center text-gray-500"
-                    >
-                      <p className="text-3xl">No Appointments available.</p>
-                    </td>
-                  </tr>
-                }
-              </tbody>
-            </table>
+      {/* Dynamic Grid Mapping */}
+      <div>
+        <h2 className="text-lg font-bold text-gray-500 uppercase tracking-wider mb-4 ">
+          Authorized Modules ({accessibleModules.length})
+        </h2>
+
+        {accessibleModules.length > 0 ?
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {accessibleModules.map((module) => {
+              const Icon = module.icon;
+
+              return (
+                <Link
+                  key={module.href}
+                  href={module.href}
+                  className="group bg-gray-200 shadow-lg p-5 rounded-xl border border-gray-300 hover:border-green-500 hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-600 transition-colors" />
+                    </div>
+
+                    <h3 className="font-bold text-gray-800 text-xl group-hover:text-emerald-700 transition-colors">
+                      {module.title}
+                    </h3>
+                    <p className="text-lg text-neutral-800 mt-1 leading-relaxed">
+                      {module.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-neutral-300 flex items-center justify-between text-[11px] text-slate-400">
+                    <span className="text-sm font-bold text-neutral-900">
+                      Access Level
+                    </span>
+                    <span className="font-semibold text-green-600 text-sm">
+                      {userRole}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
-        </div>
+        : <div className="bg-white p-8 rounded-xl border border-slate-200 text-center text-neutral-600 text-lg font-bold">
+            No modules available for your current role. Please contact your
+            system administrator.
+          </div>
+        }
       </div>
     </div>
   );

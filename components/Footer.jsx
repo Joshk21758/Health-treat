@@ -4,13 +4,13 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <div>
-      <footer className="bg-slate-900 text-slate-300 py-16">
+      <footer className="bg-neutral-900 text-slate-300 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-12">
             <div>
               <div className="flex items-center gap-2 mb-6 text-white">
                 <Smile className="w-8 h-8 text-teal-500" />
-                <span className="text-2xl font-bold tracking-tight">
+                <span className="text-3xl font-bold tracking-tight">
                   New Life Medical Centre
                 </span>
               </div>
@@ -33,14 +33,14 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-sm">
+              <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-lg">
                 Quick Links
               </h4>
               <ul className="space-y-3">
                 <li>
                   <Link
                     href="#services"
-                    className="hover:text-teal-400 transition-colors"
+                    className="hover:text-green-500 transition-colors"
                   >
                     Our Services
                   </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="#about"
-                    className="hover:text-teal-400 transition-colors"
+                    className="hover:text-green-500 transition-colors"
                   >
                     About Us
                   </Link>
@@ -56,7 +56,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/admin/login"
-                    className="hover:text-teal-400 transition-colors"
+                    className="hover:text-green-500 transition-colors"
                   >
                     Administrator Panel
                   </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/feedback"
-                    className="hover:text-teal-400 transition-colors"
+                    className="hover:text-green-500 transition-colors"
                   >
                     Give us Feedback
                   </Link>
@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-sm">
+              <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-lg">
                 Hours
               </h4>
               <ul className="space-y-3">
@@ -94,7 +94,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-slate-800 mt-12 pt-8 text-center text-slate-500 text-sm">
+          <div className="border-t border-white mt-12 pt-8 text-center text-white text-sm">
             <p>
               &copy; {new Date().getFullYear()} New Life Medical Centre. All
               rights reserved.

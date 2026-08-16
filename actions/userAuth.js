@@ -13,6 +13,7 @@ export async function register(state, formData) {
   //Validate form data
   const validatedFields = RegisterFormSchema.safeParse({
     fullName: formData.get("fullName"),
+    role: formData.get("role"),
     email: formData.get("email"),
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),
@@ -26,7 +27,7 @@ export async function register(state, formData) {
   }
 
   //Extract form data
-  const { fullName, email, password } = validatedFields.data;
+  const { fullName, role, email, password } = validatedFields.data;
 
   //check if user collection exists
   const userCollection = await getCollection("users");
@@ -56,6 +57,7 @@ export async function register(state, formData) {
   try {
     savedUser = await userCollection.insertOne({
       fullName,
+      role,
       email,
       password: hashedPassword,
     });
@@ -64,7 +66,11 @@ export async function register(state, formData) {
   }
 
   //create a session
-  await createSession(savedUser.insertedId);
+  await createSession({
+    _id: savedUser.insertedId,
+    role: role,
+    fullName: fullName,
+  });
 
   //redirect
   redirect("/admin/dashboard");
@@ -120,7 +126,11 @@ export async function login(state, formData) {
   }
 
   // create a session
-  await createSession(user._id);
+  await createSession({
+    _id: user._id,
+    role: user.role,
+    fullName: user.fullName,
+  });
 
   //redirect
   redirect("/admin/dashboard");

@@ -1,23 +1,23 @@
 import { getCollection } from "../../../../lib/db";
 import Link from "next/link";
 
-export default async function UserManagementPage() {
-  const userCollection = await getCollection("users");
-  const users = await userCollection.find().toArray();
+export default async function ConsultationsPage() {
+  const consultationsCollection = await getCollection("consultations");
+  const consultations = await consultationsCollection.find().toArray();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <Link
+          href="/admin/dashboard"
+          className="text-teal-600 hover:text-green-700 text-sm font-medium"
+        >
+          ← Back to Dashboard
+        </Link>
         {/* Header Section */}
         <div className="mb-8">
-          <Link
-            href="/admin/dashboard"
-            className="text-teal-600 hover:text-green-700 text-sm font-medium"
-          >
-            ← Back to Dashboard
-          </Link>
-          <p className="text-4xl text-neutral-700 mb-6 mt-10 font-bold">
-            View and manage Administrators.
+          <p className="text-4xl font-bold mt-6 text-neutral-700 mb-6">
+            View and manage Consultations.
           </p>
         </div>
 
@@ -28,36 +28,44 @@ export default async function UserManagementPage() {
               <thead>
                 <tr className="bg-neutral-900 text-white">
                   <th className="px-6 py-4 text-left text-sm font-semibold">
-                    Full Name
+                    Complaints *
                   </th>
                   <th className="px-6 py-4 text-left text-sm font-semibold">
-                    Email
+                    Diagnosis
                   </th>
                   <th className="px-6 py-4 text-left text-sm font-semibold">
-                    Role
+                    Prescription
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold">
+                    Lab requests
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {users.length > 0 ?
-                  users.map((user) => (
+                {consultations.length > 0 ?
+                  consultations.map((con) => (
                     <tr
-                      key={user._id}
+                      key={con._id}
                       className="hover:bg-gray-50 transition-colors duration-150"
                     >
                       <td className="px-6 py-4">
                         <p className="text-sm font-medium text-gray-900">
-                          {user.fullName}
+                          {con.chiefComplaint}
                         </p>
                       </td>
                       <td className="px-6 py-4">
                         <p className="text-sm font-semibold text-gray-900">
-                          {user.email}
+                          {con.diagnosis}
                         </p>
                       </td>
                       <td className="px-6 py-4">
                         <p className="text-sm font-medium text-gray-900">
-                          {user.role}
+                          {con.prescription}
+                        </p>
+                      </td>
+                      <td className="px-6 py-4">
+                        <p className="text-sm font-medium text-gray-900">
+                          {con.labRequests}
                         </p>
                       </td>
                     </tr>
@@ -67,7 +75,9 @@ export default async function UserManagementPage() {
                       colSpan="4"
                       className="px-6 py-8 text-center text-neutral-800"
                     >
-                      <p className="text-sm">No Administrators yet. </p>
+                      <p className="text-lg font-bold">
+                        No consultations yet.{" "}
+                      </p>
                     </td>
                   </tr>
                 }
