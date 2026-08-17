@@ -61,7 +61,7 @@ export default function PatientForm() {
                 type="text"
                 name="fullName"
                 placeholder="Patient's Full names"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-3xl border border-gray-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
               {state?.errors?.fullName && (
                 <p className="text-sm mt-4 text-red-500">
@@ -78,7 +78,7 @@ export default function PatientForm() {
                 type="text"
                 name="phone"
                 placeholder="e.g., 077 1287 453"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-3xl border border-gray-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
               {state?.errors?.phone && (
                 <p className="text-sm mt-4 text-red-500">
@@ -95,7 +95,7 @@ export default function PatientForm() {
                 type="email"
                 name="email"
                 placeholder="Email address"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-3xl border border-gray-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
             </label>
           </div>
@@ -109,7 +109,7 @@ export default function PatientForm() {
                 type="date"
                 name="dateOfBirth"
                 placeholder="Patient's DOB"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-3xl border border-gray-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               />
             </label>
 
@@ -119,7 +119,7 @@ export default function PatientForm() {
               </span>
               <select
                 name="gender"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-3xl border border-gray-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               >
                 {genders.map((gender) => (
                   <option key={gender} value={gender}>
@@ -135,7 +135,7 @@ export default function PatientForm() {
               </span>
               <select
                 name="bloodGroup"
-                className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+                className="w-full rounded-3xl border border-gray-500 bg-slate-50 px-5 py-4 text-slate-900 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
               >
                 {bloods.map((blood) => (
                   <option key={blood} value={blood}>
@@ -152,7 +152,7 @@ export default function PatientForm() {
               name="conditions"
               rows={5}
               placeholder="Please indicate any medical conditions."
-              className="w-full rounded-3xl border border-green-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
+              className="w-full rounded-3xl border border-gray-500 bg-slate-50 px-5 py-4 text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-teal-100"
             />
             {state?.errors?.conditions && (
               <p className="text-sm mt-4 text-red-500">
