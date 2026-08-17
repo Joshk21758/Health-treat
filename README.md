@@ -28,81 +28,24 @@ New Life Medical Centre is a medical appointment booking system built with Next.
 - Provider profiles and availability management
 - Appointment booking, cancellation, and rescheduling
 - Email / SMS notifications (hookable)
-- Role-based access (patients, providers, admins)
-- Simple dashboard for providers and patients
+- Role-based access ( providers, admins)
+- Simple dashboard for providers and Administrators.
 
 ## Tech stack
 
 - Frontend / Server: Next.js (React)
-- Database: MongoDB (Atlas or self-hosted)
-- ORM / Driver: MongoDB Node.js driver or Mongoose
-- Authentication: JWT, NextAuth.js, or custom (project-specific)
-- Styling: Tailwind CSS / CSS Modules / your choice
+- Database: MongoDB Atlas
+- ORM / Driver: MongoDB Node.js driver
+- Authentication: JWT, Custom Authentication system.
+- Styling: Tailwind CSS / CSS Modules
 
-> Note: Replace or extend any of the above to match the exact libraries used in your repo (e.g., Mongoose, NextAuth, Tailwind). This README gives a general setup that is compatible with typical Next.js + MongoDB projects.
-
-## Demo / Screenshots
-
-Add screenshots or a demo link here. Example:
-
-- Homepage: docs/screenshots/home.png
-- Booking flow: docs/screenshots/booking.png
-
-If you have a running demo, add the URL here.
 
 ## Prerequisites
 
-- Node.js >= 16 (or the version your project requires)
+- Node.js >= 20 or Higher version 
 - npm or yarn
 - A MongoDB database (MongoDB Atlas recommended)
 
-## Getting started (local)
-
-### Clone the repo
-
-```bash
-git clone https://github.com/Joshk21758/Med-care.git
-cd Med-care
-```
-
-### Install dependencies
-
-Using npm:
-
-```bash
-npm install
-```
-
-Or using yarn:
-
-```bash
-yarn
-```
-
-### Environment variables
-
-Create a `.env.local` file in the project root and add the variables below (example `.env.example` is included):
-
-```env
-# MongoDB connection URI
-MONGODB_URI="your-mongodb-connection-string"
-
-# Next.js
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-
-# JWT / Auth
-JWT_SECRET="a-very-secure-secret"
-
-# Optional: mail provider credentials (SendGrid, Mailgun, etc.)
-MAIL_PROVIDER_API_KEY=""
-
-# Optional: Twilio or SMS provider
-TWILIO_ACCOUNT_SID=""
-TWILIO_AUTH_TOKEN=""
-TWILIO_PHONE_NUMBER=""
-```
-
-Be careful not to commit secrets to source control. Use `.env.local` which is ignored by Git by default.
 
 ### Run the app
 
@@ -130,18 +73,6 @@ yarn build
 yarn start
 ```
 
-## Database setup
-
-- If using MongoDB Atlas, create a cluster and whitelist your IP (or enable access from anywhere during development). Copy the connection string and set `MONGODB_URI`.
-- If using a local MongoDB instance, ensure the daemon is running and use a URI like `mongodb://localhost:27017/med-care`.
-
-If the project uses Mongoose, check for a `scripts/seed.js` or `scripts/` folder that seeds initial data (providers, specialities, example users). You can run it with:
-
-```bash
-node scripts/seed.js
-```
-
-(Adjust the command if your project uses a different seed pattern.)
 
 ## API endpoints (overview)
 
@@ -179,34 +110,6 @@ A typical structure for a Next.js + MongoDB booking app:
 └─ styles/
 ```
 
-Adjust the layout to match your repository.
-
-## Testing & seeding data
-
-If you have tests, list how to run them:
-
-```bash
-npm test
-# or
-yarn test
-```
-
-To seed sample data, point to any seeding script or instructions here.
-
-## Deployment
-
-You can deploy a Next.js app to Vercel, Netlify (with adapter), or any Node host.
-
-- Vercel (recommended for Next.js):
-  - Connect your GitHub repo in Vercel.
-  - Set environment variables in the Vercel dashboard.
-  - Deploy.
-
-- Docker:
-  - Create a Dockerfile and set the `MONGODB_URI` as an env var or secret.
-
-- Traditional Node hosting:
-  - Build the app (`npm run build`) and run `npm start`.
 
 ## Contributing
 
@@ -227,9 +130,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 - Author: Josh (GitHub: @Joshk21758)
 
-If you want, I can:
-
-- Add a `.env.example` to the repo with recommended variables
-- Inspect your codebase and fill in the API endpoints and scripts sections with exact details
-- Add badges (build, license, coverage) to the top of this README
 
