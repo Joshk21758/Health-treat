@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 import { createSession } from "../lib/sessions";
 import { cookies } from "next/headers";
 
-// Register server actions
+// register server actions
 export async function register(state, formData) {
   await new Promise((resolve) => setTimeout(resolve, 3000));
   //Validate form data
@@ -76,7 +76,7 @@ export async function register(state, formData) {
   redirect("/admin/dashboard");
 }
 
-// Login server action
+// login server action
 export async function login(state, formData) {
   await new Promise((resolve) => setTimeout(resolve, 3000));
   //Validate form data
@@ -136,7 +136,7 @@ export async function login(state, formData) {
   redirect("/admin/dashboard");
 }
 
-// Logout server action
+// logout server action
 export async function logout(formData) {
   await new Promise((resolve) => setTimeout(resolve, 3000));
   //Clear the session cookie
