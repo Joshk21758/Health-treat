@@ -79,12 +79,12 @@ export async function approveAppointment(formData) {
       await transporter.sendMail({
         from: process.env.SMTP_FROM,
         to: appointment.email,
-        subject: "Your Med Life appointment has been approved",
+        subject: "Med Care appointment has been approved",
         text: `Hi ${appointment.fullName || "Patient"}, your appointment has been approved. We will contact you shortly with the final confirmation.`,
         html: `
           <h2>Appointment approved</h2>
           <p>Hi ${appointment.fullName || "Patient"},</p>
-          <p>Your appointment request with Med Life Medical Centre has been approved.</p>
+          <p>Your appointment request with Med Care has been approved.</p>
           <p><strong>Service:</strong> ${appointment.service || "Not specified"}</p>
           <p><strong>Preferred date:</strong> ${appointment.prefDate || "To be confirmed"}</p>
           <p><strong>Preferred time:</strong> ${appointment.prefTime || "To be confirmed"}</p>
@@ -130,12 +130,12 @@ export async function rescheduleAppointment(formData) {
       await transporter.sendMail({
         from: process.env.SMTP_FROM,
         to: appointment.email,
-        subject: "Your Med Life appointment has been rescheduled",
+        subject: "Your Med Care appointment has been rescheduled",
         text: `Hi ${appointment.fullName || "Patient"}, your appointment has been rescheduled. New date: ${newDate}; New time: ${newTime}.`,
         html: `
           <h2>Appointment rescheduled</h2>
           <p>Hi ${appointment.fullName || "Patient"},</p>
-          <p>Your appointment with Med Life Medical Centre has been rescheduled.</p>
+          <p>Your appointment with Med Care has been rescheduled.</p>
           <p><strong>New date:</strong> ${newDate}</p>
           <p><strong>New time:</strong> ${newTime}</p>
           <p>Please reply to this email if you need any assistance.</p>
