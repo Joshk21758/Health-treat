@@ -93,7 +93,7 @@ export default function TestimonialSlider() {
                 </p>
 
                 <div className="flex items-center gap-4 relative z-10">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-100">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-rose-100">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.author}
@@ -120,7 +120,7 @@ export default function TestimonialSlider() {
       <div className="flex items-center justify-center gap-6 mt-4">
         <button
           onClick={handlePrev}
-          className="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-teal-50 hover:text-teal-600 hover:border-teal-200 transition-colors shadow-sm"
+          className="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-teal-50 hover:text-rose-600 hover:border-teal-200 transition-colors shadow-sm"
           aria-label="Previous testimonial"
         >
           <ChevronLeft className="w-6 h-6" />
@@ -132,7 +132,7 @@ export default function TestimonialSlider() {
               key={index}
               onClick={() => handleDotClick(index)}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === currentIndex ? "bg-teal-600 w-8" : (
+                index === currentIndex ? "bg-rose-500 w-8" : (
                   "bg-slate-300 hover:bg-teal-400"
                 )
               }`}
@@ -143,7 +143,7 @@ export default function TestimonialSlider() {
 
         <button
           onClick={handleNext}
-          className="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-teal-50 hover:text-teal-600 hover:border-teal-200 transition-colors shadow-sm"
+          className="w-12 h-12 rounded-full bg-white border border-slate-200 text-slate-600 flex items-center justify-center hover:bg-teal-50 hover:text-rose-400 hover:border-teal-200 transition-colors shadow-sm"
           aria-label="Next testimonial"
         >
           <ChevronRight className="w-6 h-6" />

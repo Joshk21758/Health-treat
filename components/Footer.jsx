@@ -4,14 +4,14 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <div>
-      <footer className="bg-neutral-900 text-slate-300 py-16">
+      <footer className="bg-neutral-800 text-slate-300 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-12">
             <div>
               <div className="flex items-center gap-2 mb-6 text-white">
-                <Smile className="w-8 h-8 text-teal-500" />
-                <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-green-500">
-                  New Life Medical Centre
+                <Smile className="w-8 h-8 text-rose-500" />
+                <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-rose-400">
+                  Med Care
                 </span>
               </div>
               <p className="text-gray-200 mb-6 leading-relaxed">
@@ -20,14 +20,14 @@ export default function Footer() {
               </p>
               <div className="flex items-center gap-4 text-gray-200">
                 <Phone className="w-5 h-5" />
-                <span>077 1078 320</span>
+                <span>0972 712779</span>
               </div>
               <div className="flex items-center gap-4 text-gray-200 mt-3">
                 <MapPin color="red" className="w-5 h-5" />
                 <span>
-                  Libala stage 1, No.2 Boli Rd
+                  Lusaka, Shantumbu Rd
                   <br />
-                  Lusaka, 10101
+                  Lusaka, Zambia, 10101
                 </span>
               </div>
             </div>
@@ -40,7 +40,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="#services"
-                    className="hover:text-green-500 transition-colors"
+                    className="hover:text-rose-500 transition-colors"
                   >
                     Our Services
                   </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="#about"
-                    className="hover:text-green-500 transition-colors"
+                    className="hover:text-rose-500 transition-colors"
                   >
                     About Us
                   </Link>
@@ -56,7 +56,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/admin/login"
-                    className="hover:text-green-500 transition-colors"
+                    className="hover:text-rose-500 transition-colors"
                   >
                     Administrator Panel
                   </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
                 <li>
                   <Link
                     href="/feedback"
-                    className="hover:text-green-500 transition-colors"
+                    className="hover:text-rose-500 transition-colors"
                   >
                     Give us Feedback
                   </Link>
@@ -87,8 +87,8 @@ export default function Footer() {
                 </li>
                 <li className="flex justify-between pb-2">
                   <span>Sunday</span>
-                  <span className="text-teal-400 font-medium">
-                    Open 24 hours
+                  <span className="text-rose-400 font-medium">
+                    08:00 - 18-00 hours
                   </span>
                 </li>
               </ul>
@@ -96,8 +96,7 @@ export default function Footer() {
           </div>
           <div className="border-t border-gray-600 mt-12 pt-8 text-center text-white text-sm">
             <p>
-              &copy; {new Date().getFullYear()} New Life Medical Centre. All
-              rights reserved.
+              &copy; {new Date().getFullYear()} Med Care. All rights reserved.
             </p>
           </div>
         </div>

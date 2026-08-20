@@ -96,86 +96,58 @@ export default function LandingPage() {
       title: "General Consultation",
       description:
         "Primary evaluation and diagnosis by general practitioner form common illnesses, routine assessments & treatment recommendations.",
-      icon: <Stethoscope className="w-6 h-6 text-teal-600" />,
+      icon: <Stethoscope className="w-6 h-6 text-rose-400" />,
       image: General,
     },
     {
       title: "Specialist Consultation",
       description:
         "Advanced medical evaluation and care provided by specialized doctors focused on specific fields of medicine.",
-      icon: <BriefcaseMedical className="w-6 h-6 text-teal-600" />,
+      icon: <BriefcaseMedical className="w-6 h-6 text-rose-400" />,
       image: Spec,
     },
     {
       title: "Laboratory",
       description:
         "On-site diagnostic testing (such as blood tests, urinalysis & infection screenings) to support accurate diagnosis.",
-      icon: <FlaskConical className="w-6 h-6 text-teal-600" />,
+      icon: <FlaskConical className="w-6 h-6 text-rose-400" />,
       image: Lab,
     },
     {
       title: "Dental",
       description:
         "Preventive, diagnostic and corrective oral health care, including routine check-ups, cleaning, fillings & extractions.",
-      icon: <Smile className="w-6 h-6 text-teal-600" />,
+      icon: <Smile className="w-6 h-6 text-rose-400" />,
       image: Teeth,
     },
     {
       title: "Antenatal",
       description:
         "Dedicated healthcare and monitoring for pregnant women to track maternal health & fetal development.",
-      icon: <Baby className="w-6 h-6 text-teal-600" />,
+      icon: <Baby className="w-6 h-6 text-rose-400" />,
       image: Anten,
-    },
-    {
-      title: "Family Planning",
-      description:
-        "Counseling, education and access to various contraceptive methods to support informed family planning choices.",
-      icon: <HeartHandshake className="w-6 h-6 text-teal-600" />,
-      image: Fam,
-    },
-    {
-      title: "Ultrasound",
-      description:
-        "Non-invasive imaging technology using sound waves to view internal organs, tissues & track baby development during pregnancy.",
-      icon: <Scan className="w-6 h-6 text-teal-600" />,
-      image: Ultra,
     },
     {
       title: "Reproductive Health",
       description:
         "Comprehensive medical services addressing fertility, hormonal health, sexual health & reproductive system wellness.",
-      icon: <Heart className="w-6 h-6 text-teal-600" />,
+      icon: <Heart className="w-6 h-6 text-rose-400" />,
       image: Repro,
-    },
-    {
-      title: "Male Circumcision",
-      description:
-        "Safe clinical surgical procedures for circumcision, performed for hygiene, or preventive health.",
-      icon: <Scissors className="w-6 h-6 text-teal-600" />,
-      image: Male,
-    },
-    {
-      title: "Pharmacy Dispensary",
-      description:
-        "On-site provision of prescribed medications, over-the-counter drugs, and guidance on proper medication usage.",
-      icon: <Pill className="w-6 h-6 text-teal-600" />,
-      image: Pharm,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-green-100 font-sans text-slate-900">
+    <div className="min-h-screen bg-rose-100 font-sans text-slate-900">
       {/* Hero Section */}
       <section
         ref={(el) => (sectionRefs.current[0] = el)}
         className="slide-up-reveal relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-50/90 to-green-50/50 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-50/90 to-rose-100 mix-blend-multiply" />
           {/* Abstract Shapes for background */}
-          <div className="absolute top-20 right-0 w-96 h-96 bg-green-200/30 rounded-full blur-3xl -z-10" />
-          <div className="absolute bottom-0 left-20 w-72 h-72 bg-green-200/30 rounded-full blur-3xl -z-10" />
+          <div className="absolute top-20 right-0 w-96 h-96 bg-rose-200/30 rounded-full blur-3xl -z-10" />
+          <div className="absolute bottom-0 left-20 w-72 h-72 bg-rose-200/30 rounded-full blur-3xl -z-10" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -183,7 +155,7 @@ export default function LandingPage() {
             <div className="max-w-2xl">
               <h1 className="text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
                 Your Journey to a{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-green-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-800 to-rose-400">
                   Healthier Life
                 </span>{" "}
                 Starts Here.
@@ -194,10 +166,10 @@ export default function LandingPage() {
                 best, healthy and professionalized treatment.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 animate-pulse">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/appointments"
-                  className="bg-neutral-800 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-xl shadow-teal-600/20 active:scale-95 flex items-center justify-center gap-2"
+                  className="bg-neutral-800 hover:bg-rose-400 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-xl shadow-teal-600/20 active:scale-95 flex items-center justify-center gap-2"
                 >
                   <CalendarDays className="w-5 h-5" />
                   Book an Appointment
@@ -225,7 +197,7 @@ export default function LandingPage() {
                         Top Rated Medical Centre
                       </h4>
                       <p className="text-sm text-green-600">
-                        4.7-Star Google Reviews
+                        5-Star Google Reviews
                       </p>
                     </div>
                   </div>
@@ -244,7 +216,7 @@ export default function LandingPage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-green-600 font-semibold tracking-wide uppercase text-3xl mb-3">
+            <h2 className="text-rose-500 font-semibold tracking-wide uppercase text-3xl mb-3">
               Our Services
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-neutral-700 mb-4">
@@ -260,7 +232,7 @@ export default function LandingPage() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50 hover:border-teal-100 hover:bg-white hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50 hover:border-slate-100 hover:bg-rose-100 hover:shadow-xl transition-all duration-300 cursor-pointer"
               >
                 <div className="absolute inset-0 opacity-35">
                   <Image
@@ -274,7 +246,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="relative p-8">
-                  <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-teal-50 transition-all duration-300">
+                  <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-rose-50 transition-all duration-300">
                     {service.icon}
                   </div>
                   <h4 className="text-xl font-bold text-neutral-900 mb-3">
@@ -294,7 +266,7 @@ export default function LandingPage() {
       <section
         id="about"
         ref={(el) => (sectionRefs.current[2] = el)}
-        className="slide-up-reveal py-24 bg-green-50 relative border-t border-slate-200"
+        className="slide-up-reveal py-24 bg-slate-50 relative border-t border-slate-200"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -344,11 +316,11 @@ export default function LandingPage() {
             </div>
 
             <div>
-              <h2 className="text-neutral-700 font-semibold tracking-wide uppercase text-3xl mb-3">
+              <h2 className="text-rose-500 font-semibold tracking-wide uppercase text-3xl mb-3">
                 About Us
               </h2>
-              <h3 className="text-3xl md:text-4xl font-bold text-green-900 mb-6 leading-tight">
-                Redefining your healthy lifestyle
+              <h3 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-6 leading-tight">
+                Reshaping your healthy living
               </h3>
               <p className="text-lg text-slate-700 mb-8 leading-relaxed">
                 At New Life Medical Centre, we believe that a visit to our
@@ -362,11 +334,10 @@ export default function LandingPage() {
                 {[
                   "Experienced and compassionate specialists.",
                   "Cutting-edge 3D imaging and laser technology.",
-                  "Relaxing, spa-like atmosphere in every room.",
                   "Personalized treatment plans tailored to your needs.",
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-4">
-                    <div className="w-6 h-6 rounded-full bg-green-100 text-teal-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 className="w-4 h-4" />
                     </div>
                     <span className="text-slate-700 font-medium">{item}</span>
@@ -386,10 +357,10 @@ export default function LandingPage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-green-800 font-semibold tracking-wide uppercase text-3xl mb-3">
+            <h2 className="text-rose-600 font-semibold tracking-wide uppercase text-3xl mb-3">
               Frequently Asked Questions
             </h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-neutral-700 mb-4">
+            <h3 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-4">
               Everything you need to know before your visit
             </h3>
           </div>
@@ -407,7 +378,7 @@ export default function LandingPage() {
                     </h4>
                     <p className="mt-3 text-slate-600">{faq.answer}</p>
                   </div>
-                  <div className="rounded-full bg-green-100 p-2 text-teal-700">
+                  <div className="rounded-full bg-green-100 p-2 text-rose-400">
                     <ChevronDown className="h-5 w-5" />
                   </div>
                 </div>
@@ -423,10 +394,10 @@ export default function LandingPage() {
         ref={(el) => (sectionRefs.current[5] = el)}
         className="slide-up-reveal py-24 bg-white relative"
       >
-        <div className="absolute inset-0 bg-green-50/30 -skew-y-2 transform origin-top-left -z-10" />
+        <div className="absolute inset-0 bg-rose-50/30 -skew-y-2 transform origin-top-left -z-10" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-green-800 font-semibold tracking-wide uppercase text-3xl mb-3">
+            <h2 className="text-rose-600 font-semibold tracking-wide uppercase text-3xl mb-3">
               Patient Stories
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-4">

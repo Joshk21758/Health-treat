@@ -33,7 +33,7 @@ export default function FacilityMetricsExport({ metrics, topServices }) {
     <button
       type="button"
       onClick={downloadPdf}
-      className="inline-flex items-center rounded-full bg-gray-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-600/20 transition hover:bg-green-700 cursor-pointer"
+      className="inline-flex items-center rounded-full bg-gray-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-600/20 transition hover:bg-rose-500 cursor-pointer"
     >
       Export Metrics to PDF
     </button>
