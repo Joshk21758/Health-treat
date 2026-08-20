@@ -25,7 +25,7 @@ const testimonials = [
     id: 3,
     content: "They are good at their work.",
     author: "Joseph J. Samwenda",
-    role: "Father of two",
+    role: "Dental patient",
     rating: 5,
     image: "https://picsum.photos/seed/patient8/150/150",
   },

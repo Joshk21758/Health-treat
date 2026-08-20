@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import TestimonialSlider from "../components/TestimonialSlider";
-import Hero from "../assets/images/hero.jpg";
+import Hero from "../assets/images/hero.jpeg";
 import Serv from "../assets/images/image1.jpg";
 import Place from "../assets/images/place.jpg";
 import Poster from "../assets/images/image2.jpg";
@@ -18,6 +18,7 @@ import Fam from "../assets/images/family.jpeg";
 import Ultra from "../assets/images/ultra.webp";
 import Pharm from "../assets/images/pharm.jpg";
 import Male from "../assets/images/male.jpeg";
+import Banner from "../assets/images/banner.jpeg";
 import {
   Smile,
   Sparkles,
@@ -304,7 +305,7 @@ export default function LandingPage() {
                   </div>
                   <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl border border-slate-200/50">
                     <Image
-                      src={Poster}
+                      src={Banner}
                       alt="Medical centre"
                       fill
                       className="object-cover"
