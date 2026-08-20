@@ -18,7 +18,7 @@ export default async function DashboardHubPage() {
       {/* Banner */}
       <div className="bg-neutral-900 rounded-2xl p-6 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm">
         <div>
-          <span className="inline-flex items-center gap-1.5 text-sm font-semibold bg-emerald-500/10 text-emerald-400 border border-green-500/20 px-2.5 py-1 rounded-full mb-2">
+          <span className="inline-flex items-center gap-1.5 text-sm font-semibold bg-emerald-500/10 text-rose-400 border border-rose-500/20 px-2.5 py-1 rounded-full mb-2">
             <ShieldCheck className="w-3.5 h-3.5" /> Logged in as {userRole}
           </span>
           <h1 className="text-2xl font-bold">Welcome, {user.fullName}</h1>
@@ -44,17 +44,17 @@ export default async function DashboardHubPage() {
                 <Link
                   key={module.href}
                   href={module.href}
-                  className="group bg-gray-200 shadow-lg p-5 rounded-xl border border-gray-300 hover:border-green-500 hover:shadow-md transition-all flex flex-col justify-between"
+                  className="group bg-gray-200 shadow-lg p-5 rounded-xl border border-gray-300 hover:border-rose-500 hover:shadow-md transition-all flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                      <div className="p-2.5 rounded-lg bg-emerald-50 text-emerald-700 group-hover:bg-rose-400 group-hover:text-white transition-colors">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-600 transition-colors" />
+                      <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-rose-500 transition-colors" />
                     </div>
 
-                    <h3 className="font-bold text-gray-800 text-xl group-hover:text-emerald-700 transition-colors">
+                    <h3 className="font-bold text-gray-800 text-xl group-hover:text-rose-500 transition-colors">
                       {module.title}
                     </h3>
                     <p className="text-lg text-neutral-800 mt-1 leading-relaxed">
@@ -66,7 +66,7 @@ export default async function DashboardHubPage() {
                     <span className="text-sm font-bold text-neutral-900">
                       Access Level
                     </span>
-                    <span className="font-semibold text-green-600 text-sm">
+                    <span className="font-semibold text-rose-400 text-sm">
                       {userRole}
                     </span>
                   </div>
