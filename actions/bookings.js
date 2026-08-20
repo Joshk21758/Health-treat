@@ -9,7 +9,7 @@ import { revalidatePath } from "next/cache";
 
 // User appointment server action
 export async function createAppointment(state, formData) {
-  //Simulate async delay
+  //Simulate async request
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const validatedFields = AppointmentFormSchema.safeParse({
