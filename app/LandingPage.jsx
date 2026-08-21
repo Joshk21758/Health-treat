@@ -6,7 +6,6 @@ import TestimonialSlider from "../components/TestimonialSlider";
 import Hero from "../assets/images/hero.jpeg";
 import Serv from "../assets/images/image1.jpg";
 import Place from "../assets/images/place.jpg";
-import Poster from "../assets/images/image2.jpg";
 import Team from "../assets/images/team.jpg";
 import General from "../assets/images/general.jpg";
 import Spec from "../assets/images/spec.jpeg";
@@ -190,14 +189,14 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur p-6 rounded-2xl shadow-lg border border-white/20">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-teal-600">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-neutral-700">
                       <ShieldCheck className="w-6 h-6" />
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">
                         Top Rated Medical Centre
                       </h4>
-                      <p className="text-sm text-green-600">
+                      <p className="text-sm text-rose-400">
                         5-Star Google Reviews
                       </p>
                     </div>
