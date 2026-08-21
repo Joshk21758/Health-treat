@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import TestimonialSlider from "../components/TestimonialSlider";
 import Hero from "../assets/images/hero.jpeg";
-import Serv from "../assets/images/image1.jpg";
 import Place from "../assets/images/place.jpg";
 import Team from "../assets/images/team.jpg";
 import General from "../assets/images/general.jpg";
@@ -283,7 +282,7 @@ export default function LandingPage() {
                   </div>
                   <div className="relative aspect-square rounded-3xl overflow-hidden shadow-xl border border-slate-200/50">
                     <Image
-                      src={Serv}
+                      src={Banner}
                       alt="Dental equipment"
                       fill
                       className="object-cover"
