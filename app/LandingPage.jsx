@@ -13,7 +13,6 @@ import Repro from "../assets/images/repro.jpg";
 import Lab from "../assets/images/lab.webp";
 import Teeth from "../assets/images/dental.jpeg";
 import Anten from "../assets/images/baby.jpeg";
-import Fam from "../assets/images/family.jpeg";
 import Ultra from "../assets/images/ultra.webp";
 import Pharm from "../assets/images/pharm.jpg";
 import Male from "../assets/images/male.jpeg";
